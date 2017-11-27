@@ -10,4 +10,4 @@ $> coucou tu veux voir mon git ?
 
 # Protocol
 
-[Protocol Protocol](http://petr.lastovicka.sweb.cz/protocl2en.htm)
+[Protocol Gomoku](http://petr.lastovicka.sweb.cz/protocl2en.htm)
