@@ -6,6 +6,7 @@ endif (NOT WIN32)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(SOURCES_FILES src/main.cpp)
+set(SOURCES_FILES src/Board.cpp)
 
 include_directories("./include")
 

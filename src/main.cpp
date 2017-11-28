@@ -3,8 +3,11 @@
 //
 
 #include <iostream>
+#include "Board.hpp"
 
 int             main()
 {
-    std::cout << "sexy dance 3D" << std::endl;
+    Board       board;
+
+    board.displayMap();
 }
