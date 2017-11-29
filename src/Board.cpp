@@ -20,6 +20,11 @@ void                                Board::setSquare(int x, int y, ESquareType t
     _map[x + y * 19] = type;
 }
 
+void                                Board::emptySquare(int x, int y)
+{
+    _map[x + y * 19] = EMPTY;
+}
+
 void                                Board::clearMap()
 {
     std::fill(begin(_map), end(_map), EMPTY);

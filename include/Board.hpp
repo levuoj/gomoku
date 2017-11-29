@@ -17,7 +17,8 @@ public:
     ~Board() = default;
 
     std::array<ESquareType, 361> const& getMap() const;
-    void                                setSquare(int, int, ESquareType);
+    void                                setSquare(int x, int y, ESquareType);
+    void                                emptySquare(int x, int y);
     void                                clearMap();
     void                                displayMap() const;
 };
