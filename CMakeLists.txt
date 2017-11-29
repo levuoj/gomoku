@@ -7,6 +7,6 @@ endif (NOT WIN32)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 FILE(GLOB SOURCES_FILES src/*.cpp)
 FILE(GLOB INCLUDE_FILES include/*.hpp)
-INCLUDE_DIRECTORIES("./include")
+INCLUDE_DIRECTORIES("include")
 
 add_executable(Tyranosaurus_R ${INCLUDE_FILES} ${SOURCES_FILES})
