@@ -5,9 +5,9 @@ if (NOT WIN32)
 endif (NOT WIN32)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(SOURCES_FILES src/main.cpp)
-set(SOURCES_FILES src/Board.cpp)
+FILE(GLOB SOURCES_FILES src/*.cpp)
+FILE(GLOB INCLUDE_FILES include/*.hpp)
 
-include_directories("./include")
+INCLUDE_DIRECTORIES("./include")
 
-add_executable(Tyranosaurus_R ${SOURCES_FILES})
+add_executable(Tyranosaurus_R ${INCLUDE_FILES} ${SOURCES_FILES})
