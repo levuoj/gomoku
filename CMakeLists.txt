@@ -9,4 +9,4 @@ FILE(GLOB SOURCES_FILES src/*.cpp)
 FILE(GLOB INCLUDE_FILES include/*.hpp)
 INCLUDE_DIRECTORIES("include")
 
-add_executable(Tyranosaurus_R ${INCLUDE_FILES} ${SOURCES_FILES})
+add_executable(Tyrannosaurus_R ${INCLUDE_FILES} ${SOURCES_FILES})
