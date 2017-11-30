@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(Tyranosaurus_R)
+project(Tyrannosaurus_R)
 if (NOT WIN32)
     set (CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 endif (NOT WIN32)

@@ -2,8 +2,8 @@
 // Created by pashervz on 29/11/17.
 //
 
-#ifndef TYRANOSAURUS_R_AMANAGER_HPP
-#define TYRANOSAURUS_R_AMANAGER_HPP
+#ifndef TYRANNOSAURUS_R_AMANAGER_HPP
+#define TYRANNOSAURUS_R_AMANAGER_HPP
 
 #include "Event.hpp"
 
@@ -24,4 +24,4 @@ public:
 
 #include "Mediator.hpp"
 
-#endif //TYRANOSAURUS_R_AMANAGER_HPP
+#endif //TYRANNOSAURUS_R_AMANAGER_HPP

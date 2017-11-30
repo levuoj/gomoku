@@ -2,8 +2,8 @@
 // Created by pashervz on 29/11/17.
 //
 
-#ifndef TYRANOSAURUS_R_PROTOCOLMANAGER_HPP
-#define TYRANOSAURUS_R_PROTOCOLMANAGER_HPP
+#ifndef TYRANNOSAURUS_R_PROTOCOLMANAGER_HPP
+#define TYRANNOSAURUS_R_PROTOCOLMANAGER_HPP
 
 #include <unordered_map>
 #include "AManager.hpp"
@@ -19,17 +19,24 @@ private:
             { "END", EventType::END },
             { "ABOUT", EventType::ABOUT }
     };
+
+    bool                                            _terminate = false;
+
 public:
     explicit ProtocolManager(Mediator &mediator) : AManager(mediator) {}
 
     virtual ~ProtocolManager() final = default;
 
-    void receive(Event const &);
+    void    receive(Event const &);
 
-    void readInfos();
+    void    readInfos();
 
-    void makeEvent(std::vector<std::string> const &);
+    void    writeInfos(std::string const &) const;
+
+    void    makeEvent(std::vector<std::string> const &);
+
+    bool    getTerminate() const { return _terminate; }
 };
 
 
-#endif //TYRANOSAURUS_R_PROTOCOLMANAGER_HPP
+#endif //TYRANNOSAURUS_R_PROTOCOLMANAGER_HPP

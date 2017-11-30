@@ -2,8 +2,8 @@
 // Created by pashervz on 29/11/17.
 //
 
-#ifndef TYRANOSAURUS_R_AIBRAIN_HPP
-#define TYRANOSAURUS_R_AIBRAIN_HPP
+#ifndef TYRANNOSAURUS_R_AIBRAIN_HPP
+#define TYRANNOSAURUS_R_AIBRAIN_HPP
 
 #include "Mediator.hpp"
 #include "AManager.hpp"
@@ -16,4 +16,4 @@ public:
 };
 
 
-#endif //TYRANOSAURUS_R_AIBRAIN_HPP
+#endif //TYRANNOSAURUS_R_AIBRAIN_HPP
