@@ -6,7 +6,6 @@
 #include "ProtocolManager.hpp"
 
 void ProtocolManager::receive(Event const & event) {
-    std::cout << "Protocol Manager : I received an Event : " << event.datas.at(0) << std::endl;
     switch (event.type) {
         case EventType::WRITE:
             writeInfos(event.datas.at(0));

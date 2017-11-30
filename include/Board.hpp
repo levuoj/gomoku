@@ -11,16 +11,23 @@
 class Board {
 private:
     //                    19 * 19
-    std::array<ESquareType, 361>        _map;
+    std::array<ESquareType, 361> _map;
 public:
     Board();
+
     ~Board() = default;
 
-    std::array<ESquareType, 361> const& getMap() const;
-    void                                setSquare(int x, int y, ESquareType);
-    void                                emptySquare(int x, int y);
-    void                                clearMap();
-    void                                displayMap() const;
+    std::array<ESquareType, 361> const &getMap() const;
+
+    void setSquare(int x, int y, ESquareType);
+
+    void emptySquare(int x, int y);
+
+    void clearMap();
+
+    void displayMap() const;
+
+    bool isEmpty(int x, int y) const;
 };
 
 

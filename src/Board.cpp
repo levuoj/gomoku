@@ -30,6 +30,11 @@ void                                Board::clearMap()
     std::fill(begin(_map), end(_map), EMPTY);
 }
 
+bool                                Board::isEmpty(int x, int y) const
+{
+    return (_map[x + y * 19] ==  EMPTY);
+}
+
 void                                Board::displayMap() const
 {
     std::cout << std::string(21, '#') << std::endl;

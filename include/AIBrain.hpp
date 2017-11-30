@@ -10,13 +10,20 @@
 
 #include <vector>
 #include "ESquareType.hpp"
+#include "Board.hpp"
 
 class AIBrain : public AManager {
 private:
     ESquareType _type;
+    Board       board;
+
     const int MAX = 1000;
     const int MIN = -1000;
     const int DEPTH = 3;
+
+    std::string const play();
+
+    int minimax(int depth, int nodeIndex, bool maximizePlayer, std::vector<int> values, int alpha, int beta);
 public:
     AIBrain(ESquareType, Mediator &);
 
@@ -30,10 +37,9 @@ public:
 
     void setType(ESquareType);
 
-    void play();
-
-    int minimax(int depth, int nodeIndex, bool maximizePlayer, std::vector<int> values, int alpha, int beta);
+    void begin();
+    void start(std::string const&);
+    void turn(std::string);
 };
-
 
 #endif //TYRANOSAURUS_R_AIBRAIN_HPP
