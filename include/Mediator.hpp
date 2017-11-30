@@ -11,6 +11,10 @@
 #include "AIBrain.hpp"
 #include "ProtocolManager.hpp"
 
+#include <vector>
+#include <memory>
+#include "AManager.hpp"
+
 class Mediator {
 private:
     std::vector<std::shared_ptr<AManager>>      _managers;
