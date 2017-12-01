@@ -23,7 +23,6 @@ public:
     ~Mediator() = default;
 
     void        transmit(Event const & event) {
-        std::cout << "EVENT TYPE => " << event.type << std::endl;
         for (auto const & it : _managers) {
             it->receive(event);
         }
