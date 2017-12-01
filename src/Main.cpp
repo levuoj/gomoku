@@ -6,7 +6,7 @@
 
 int             main()
 {
-    Mediator    mediator;
+	Mediator    mediator;
 
-    mediator.launch();
+	mediator.launch();
 }

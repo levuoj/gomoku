@@ -2,6 +2,7 @@
 // Created by levuoj on 11/28/17.
 //
 
+#include <string>
 #include <iostream>
 #include "Board.hpp"
 

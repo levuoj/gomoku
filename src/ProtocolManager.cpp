@@ -2,6 +2,8 @@
 // Created by pashervz on 29/11/17.
 //
 
+#include <string>
+#include <fstream>
 #include <vector>
 #include "ProtocolManager.hpp"
 
@@ -24,8 +26,13 @@ void ProtocolManager::receive(Event const & event) {
 void ProtocolManager::readInfos() {
     std::vector<std::string>        infos;
     std::string                     info;
+	std::ofstream					os;
+
 
     std::getline(std::cin, info);
+	os.open("log.txt", std::ios::app);
+	os << info << std::endl;
+	os.close();
     infos.push_back(info);
     if (info.find("BOARD") != std::string::npos) {
         while (true) {
@@ -39,8 +46,8 @@ void ProtocolManager::readInfos() {
 }
 
 void ProtocolManager::writeInfos(std::string const & toWrite) const {
-    if (!toWrite.empty())
-        std::cout << toWrite << std::endl;
+	if (!toWrite.empty())
+		std::cout << toWrite << std::endl;
 }
 
 void ProtocolManager::makeEvent(std::vector<std::string> const & infos) {
