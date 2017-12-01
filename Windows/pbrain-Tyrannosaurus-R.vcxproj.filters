@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\src\AIBrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\src\AManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\src\Board.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\src\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\src\Mediator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\src\ProtocolManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\include\AIBrain.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\include\AManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\include\Board.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\include\ESquareType.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\include\Event.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\include\Mediator.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\include\ProtocolManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\53495\Desktop\Gomoku\gomoku-lab\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BA1CBDEF-D9BD-3778-9002-9E92F542B11D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{81959776-A70D-37C1-BE83-6AAD31B99CC6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
