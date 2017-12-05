@@ -6,6 +6,8 @@
 #include <iostream>
 #include "Board.hpp"
 
+const int      Board::SQRTDIM = static_cast<int>(std::sqrt(361));
+
 Board::Board()
 {
     clearMap();
@@ -18,12 +20,12 @@ std::array<ESquareType, 361> const& Board::getMap() const
 
 void                                Board::setSquare(int x, int y, ESquareType type)
 {
-    _map[x + y * 19] = type;
+    _map[x * SQRTDIM + y] = type;
 }
 
 void                                Board::emptySquare(int x, int y)
 {
-    _map[x + y * 19] = EMPTY;
+    _map[x * SQRTDIM + y] = EMPTY;
 }
 
 void                                Board::clearMap()
@@ -33,20 +35,20 @@ void                                Board::clearMap()
 
 bool                                Board::isEmpty(int x, int y) const
 {
-    return (_map[x + y * 19] ==  EMPTY);
+    return (_map[x * SQRTDIM + y] ==  EMPTY);
 }
 
 void                                Board::displayMap() const
 {
     std::cout << std::string(21, '#') << std::endl;
-    for (auto y = 0; y < 19; ++y)
+    for (auto y = 0; y < SQRTDIM; ++y)
     {
         std::cout << "#";
-        for (auto x = 0; x < 19; ++x)
+        for (auto x = 0; x < SQRTDIM; ++x)
         {
-            if (_map[x + y * 19] == EMPTY)
+            if (_map[x * SQRTDIM + y] == EMPTY)
                 std::cout << " ";
-            else if (_map[x + y * 19] == BLACK)
+            else if (_map[x * SQRTDIM + y] == BLACK)
                 std::cout << "O";
             else
                 std::cout << "X";

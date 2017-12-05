@@ -2,16 +2,19 @@
 // Created by levuoj on 11/28/17.
 //
 
-#ifndef TYRANOSAURUS_R_BOARD_HPP
-#define TYRANOSAURUS_R_BOARD_HPP
+#ifndef TYRANNOSAURUS_R_BOARD_HPP
+#define TYRANNOSAURUS_R_BOARD_HPP
 
 #include <array>
+#include <cmath>
 #include "ESquareType.hpp"
 
 class Board {
 private:
-    //                    19 * 19
+    static const int              SQRTDIM;
+
     std::array<ESquareType, 361> _map;
+
 public:
     Board();
 
@@ -31,4 +34,4 @@ public:
 };
 
 
-#endif //TYRANOSAURUS_R_BOARD_HPP
+#endif //TYRANNOSAURUS_R_BOARD_HPP
