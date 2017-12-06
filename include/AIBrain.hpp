@@ -10,13 +10,11 @@
 
 #include <vector>
 #include "ESquareType.hpp"
-#include "Board.hpp"
 #include "MoveManager.hpp"
 
 class AIBrain : public AManager {
 private:
     ESquareType _type;
-    Board board;
     MoveManager moveManager;
 
     const int MAX = 1000;

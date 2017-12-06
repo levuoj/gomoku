@@ -12,16 +12,14 @@
 
 class MoveManager {
 private:
-    Board               _board;
     std::vector<Move>   _moves;
 
 public:
     MoveManager() = default;
     ~MoveManager() = default;
 
-    Move            determineBestMove() const;
-    void            findMoves() const;
-    void            setBoard(Board const & board) { _board = board; }
+    std::string const       determineBestMove();
+    void                    findMoves() const;
 };
 
 

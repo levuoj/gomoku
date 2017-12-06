@@ -15,8 +15,13 @@ private:
 
     std::array<ESquareType, 361> _map;
 
-public:
+    static Board *              boardInst;
+
     Board();
+
+public:
+
+    static Board *               Inst();
 
     ~Board() = default;
 

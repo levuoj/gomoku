@@ -6,6 +6,19 @@
 #include <iostream>
 #include "Board.hpp"
 
+//SINGLETON
+//BEGIN
+
+Board *        Board::boardInst = nullptr;
+
+Board *        Board::Inst() {
+    if (!boardInst)
+        boardInst = new Board;
+    return boardInst;
+}
+
+//END
+
 const int      Board::SQRTDIM = static_cast<int>(std::sqrt(361));
 
 Board::Board()

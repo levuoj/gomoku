@@ -21,7 +21,7 @@ public:
     Move() = default;
     ~Move() = default;
 
-    Action const &             findBestAction();
+    Action const &            findBestAction();
 };
 
 

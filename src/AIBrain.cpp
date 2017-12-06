@@ -7,6 +7,7 @@
 #include <random>
 #include <sstream>
 #include "AIBrain.hpp"
+#include "Board.hpp"
 
 AIBrain::AIBrain(ESquareType type, Mediator & mediator) : AManager(mediator)
 {
@@ -67,7 +68,7 @@ std::string const     AIBrain::play()
 
     int x = distribution(generator);
     int y = distribution(generator);
-    while (!board.isEmpty(x, y))
+    while (!Board::Inst()->isEmpty(x, y))
     {
         x = distribution(generator);
         y = distribution(generator);
@@ -111,17 +112,14 @@ void AIBrain::start(std::string const& string)
 
 void AIBrain::turn(std::string string)
 {
-    // tmp
-    string = string.substr(string.find(" ") + 1);;
-    //
     std::istringstream  iss(string);
     int y = std::stoi(string.substr(string.find(",") + 1));
     std::getline(iss, string, ',');
     int x = std::stoi(string);
     if (_type == BLACK)
-        board.setSquare(x, y, WHITE);
+        Board::Inst()->setSquare(x, y, WHITE);
     else
-        board.setSquare(x, y, BLACK);
+        Board::Inst()->setSquare(x, y, BLACK);
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back(play());

@@ -26,13 +26,10 @@ void ProtocolManager::receive(Event const & event) {
 void ProtocolManager::readInfos() {
     std::vector<std::string>        infos;
     std::string                     info;
-	std::ofstream					os;
-
 
     std::getline(std::cin, info);
-	os.open("log.txt", std::ios::app);
-	os << info << std::endl;
-	os.close();
+    if (info.find("TURN") != std::string::npos)
+        info = info.substr(info.find(" ") + 1);
     infos.push_back(info);
     if (info.find("BOARD") != std::string::npos) {
         while (true) {
