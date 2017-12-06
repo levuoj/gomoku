@@ -6,8 +6,11 @@
 #include <include/EScore.hpp>
 #include "Move.hpp"
 
-Move::Move(int x, int y) : _x(x), _y(y)
-{}
+Move::Move(int x, int y, ESquareType type) : _x(x), _y(y), _type(type)
+{
+    addAction();
+    setScore();
+}
 
 bool        Move::checkSquare(int x, int y)
 {
@@ -39,11 +42,44 @@ void        Move::addAction()
 	_actions.emplace_back(0, std::make_pair(_x - 1, _y));
 }
 
-void       Move::setScore()
+int                 Move::diagonalNO(std::pair<int, int> const & pair)
+{
+    int             score = 0;
+    std::string     pattern = NULL;
+
+    return (score);
+}
+
+int                 Move::diagonalNE(std::pair<int, int> const & pair)
+{
+    int             score = 0;
+    return (score);
+}
+
+int                 Move::horizontal(std::pair<int, int> const & pair)
+{
+    int             score = 0;
+    return (score);
+}
+
+int                 Move::vertical(std::pair<int, int> const & pair)
+{
+    int             score = 0;
+    return (score);
+}
+
+void                Move::setScore()
 {
     for (auto &it : _actions)
     {
-	    it.score += 0;
+        if (it.score != EScore::INVALID)
+        {
+            it.score = diagonalNO(it.coords)
+                    + diagonalNE(it.coords)
+                    + horizontal(it.coords)
+                    + vertical(it.coords);
+
+        }
     }
 }
 

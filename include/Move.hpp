@@ -19,12 +19,18 @@ private:
     std::vector<Action>         _actions;
     int                         _x;
     int                         _y;
+    ESquareType                 _type;
 
     void                        addAction();
     bool                        checkSquare(int x, int y);
     void                        setScore();
+
+    int                         diagonalNO(std::pair<int, int> const&);
+    int                         diagonalNE(std::pair<int, int> const&);
+    int                         horizontal(std::pair<int, int> const&);
+    int                         vertical(std::pair<int, int> const&);
 public:
-    Move(int x, int y);
+    Move(int x, int y, ESquareType type);
     ~Move() = default;
 
     Action const &            findBestAction();
