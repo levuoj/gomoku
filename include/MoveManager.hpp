@@ -19,7 +19,8 @@ public:
     ~MoveManager() = default;
 
     std::string const       determineBestMove();
-    void                    findMoves() const;
+    void                    findMoves();
+    void                    clear();
 };
 
 

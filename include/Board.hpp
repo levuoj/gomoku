@@ -11,7 +11,6 @@
 
 class Board {
 private:
-    static const int              SQRTDIM;
 
     std::array<ESquareType, 361> _map;
 
@@ -20,6 +19,7 @@ private:
     Board();
 
 public:
+    static const int              SQRTDIM;
 
     static Board *               Inst();
 

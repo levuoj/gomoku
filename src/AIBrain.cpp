@@ -62,18 +62,8 @@ int     AIBrain::minimax(int depth, int nodeIndex, bool maximizePlayer, std::vec
 
 std::string const     AIBrain::play()
 {
-    std::random_device  rd;
-    std::default_random_engine  generator(rd());
-    std::uniform_int_distribution<int> distribution(1, 19);
-
-    int x = distribution(generator);
-    int y = distribution(generator);
-    while (!Board::Inst()->isEmpty(x, y))
-    {
-        x = distribution(generator);
-        y = distribution(generator);
-    }
-    return (std::to_string(x) + "," + std::to_string(y));
+    moveManager.findMoves();
+    return (moveManager.determineBestMove());
 }
 
 void AIBrain::receive(Event const &event)

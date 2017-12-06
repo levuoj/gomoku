@@ -2,6 +2,7 @@
 // Created by pashervz on 05/12/17.
 //
 
+#include <include/EScore.hpp>
 #include "MoveManager.hpp"
 
 std::string const             MoveManager::determineBestMove() {
@@ -11,10 +12,34 @@ std::string const             MoveManager::determineBestMove() {
         for (auto & it : this->_moves) {
             Action      bestAction = it.findBestAction();
 
-            if (bestAction.score > bestScore) {
-                bestScore += bestAction.score;
+            if (bestAction.score != EScore::INVALID) {
+                if (bestAction.score > bestScore) {
+                    bestScore += bestAction.score;
+                    bestMove = std::to_string(bestAction.coords.first) +
+                               "," +
+                               std::to_string(bestAction.coords.second);
+                }
             }
         }
+        return (bestMove);
     }
-    return ("Error");
+    return ("ERROR");
+}
+
+void                        MoveManager::findMoves() {
+    int                     idx = 0;
+
+    clear();
+    for (const auto & it : Board::Inst()->getMap()) {
+        if (it != ESquareType::EMPTY) {
+            int x = idx % Board::SQRTDIM;
+            int y = (idx - x) / Board::SQRTDIM;
+            _moves.push_back(Move(x, y));
+        }
+        ++idx;
+    }
+}
+
+void                        MoveManager::clear() {
+    this->_moves.clear();
 }
