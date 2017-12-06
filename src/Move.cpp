@@ -3,6 +3,7 @@
 //
 
 #include <include/Board.hpp>
+#include <include/EScore.hpp>
 #include "Move.hpp"
 
 Move::Move(int x, int y) : _x(x), _y(y)
@@ -19,7 +20,7 @@ bool        Move::checkSquare(int x, int y)
 
 void        Move::addAction()
 {
-    _actions.emplace_back(-10000, std::make_pair(_x, _y));
+    _actions.emplace_back(EScore::INVALID, std::make_pair(_x, _y));
     if (checkSquare(-1, -1))
 	_actions.emplace_back(0, std::make_pair(_x - 1, _y - 1));
     if (checkSquare(0, -1))
