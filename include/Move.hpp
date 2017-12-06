@@ -15,14 +15,18 @@ struct Action {
 
 class Move {
 private:
-    std::vector<Action>        _actions;
+    std::vector<Action>         _actions;
+    int                         _x;
+    int                         _y;
 
+    void                        addAction();
+    bool                        checkSquare(int x, int y);
+    void                        setScore();
 public:
-    Move() = default;
+    Move(int x, int y);
     ~Move() = default;
 
     Action const &             findBestAction();
 };
-
 
 #endif //TYRANNOSAURUS_R_MOVE_HPP
