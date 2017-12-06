@@ -5,7 +5,7 @@
 #ifndef TYRANNOSAURUS_R_ESCORE_HPP
 #define TYRANNOSAURUS_R_ESCORE_HPP
 
-enum        Score : int
+enum        EScore : int
 {
     FIVE        = 100,
     FOUR_TWO    = 90,
@@ -14,6 +14,7 @@ enum        Score : int
     THREE_ONE   = 60,
     TWO_TWO     = 40,
     TWO_ONE     = 20,
+    INVALID     = -1000000,
 };
 
 #endif //TYRANNOSAURUS_R_ESCORE_HPP

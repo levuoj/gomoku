@@ -11,6 +11,7 @@
 struct Action {
     int                     score;
     std::pair<int, int>     coords;
+    Action(int s, std::pair<int, int> pair) : score(s), coords(pair) {}
 };
 
 class Move {
