@@ -67,7 +67,6 @@ std::string const     AIBrain::play()
     std::getline(iss, toSplit, ',');
     int x = std::stoi(toSplit);
     Board::Inst()->setSquare(x, y, _type);
-    std::cout << "AI move : " << move << std::endl;
     return (move);
 }
 
@@ -116,6 +115,5 @@ void AIBrain::turn(std::string string)
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back(play());
-    Board::Inst()->displayMap();
     sending(event);
 }
