@@ -116,6 +116,6 @@ void AIBrain::turn(std::string string)
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back(play());
-    Board::Inst()->displayMap();
+    //Board::Inst()->displayMap();
     sending(event);
 }

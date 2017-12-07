@@ -61,7 +61,7 @@ std::string const   Move::addToPattern(int x, int y)
 
 int                 Move::checkPattern(std::string const &pattern, ESquareType type)
 {
-    std::cout << "pattern : '" << pattern << "'" << std::endl;
+    //std::cout << "pattern : '" << pattern << "'" << std::endl;
     if (type == ESquareType::BLACK)
     {
         for (auto const& map : BlackScore)
@@ -76,7 +76,7 @@ int                 Move::checkPattern(std::string const &pattern, ESquareType t
         {
             if (pattern.find(map.second) != std::string::npos)
             {
-                std::cout << "found : '" << map.second << "'" << std::endl;
+                //std::cout << "found : '" << map.second << "'" << std::endl;
                 return (map.first);
             }
         }
