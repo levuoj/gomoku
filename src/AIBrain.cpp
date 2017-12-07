@@ -99,6 +99,7 @@ void AIBrain::begin()
 
 void AIBrain::start(std::string const& string)
 {
+    Board::Inst()->clearMap();
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back(string);
