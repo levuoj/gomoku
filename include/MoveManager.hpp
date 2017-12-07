@@ -13,6 +13,7 @@
 class MoveManager {
 private:
     std::vector<Move>   _moves;
+    ESquareType         _playerType;
 
 public:
     MoveManager() = default;
@@ -21,6 +22,7 @@ public:
     std::string const       determineBestMove();
     void                    findMoves();
     void                    clear();
+    void                    setPlayerType(ESquareType type) { _playerType = type; }
 };
 
 

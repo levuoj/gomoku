@@ -30,7 +30,7 @@ private:
     int                         horizontal(std::pair<int, int> const&);
     int                         vertical(std::pair<int, int> const&);
 public:
-    Move(int x, int y, ESquareType type);
+    Move(int x, int y, ESquareType t);
     ~Move() = default;
 
     Action const &            findBestAction();

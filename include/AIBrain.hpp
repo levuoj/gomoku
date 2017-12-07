@@ -15,7 +15,7 @@
 class AIBrain : public AManager {
 private:
     ESquareType _type;
-    MoveManager moveManager;
+    MoveManager _moveManager;
 
     const int MAX = 1000;
     const int MIN = -1000;
@@ -26,8 +26,6 @@ private:
     int minimax(int depth, int nodeIndex, bool maximizePlayer, std::vector<int> values, int alpha, int beta);
 
 public:
-    AIBrain(ESquareType, Mediator &);
-
     explicit AIBrain(Mediator &);
 
     virtual ~AIBrain() final = default;

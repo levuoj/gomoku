@@ -9,12 +9,9 @@
 #include "AIBrain.hpp"
 #include "Board.hpp"
 
-AIBrain::AIBrain(ESquareType type, Mediator & mediator) : AManager(mediator)
-{
-    _type = type;
+AIBrain::AIBrain(Mediator & mediator) : AManager(mediator) {
+    _type = ESquareType::BLACK;
 }
-
-AIBrain::AIBrain(Mediator & mediator) : AManager(mediator) {}
 
 ESquareType const& AIBrain::getType() const
 {
@@ -62,8 +59,8 @@ int     AIBrain::minimax(int depth, int nodeIndex, bool maximizePlayer, std::vec
 
 std::string const     AIBrain::play()
 {
-    moveManager.findMoves();
-    std::string move = moveManager.determineBestMove();
+    _moveManager.findMoves();
+    std::string move = _moveManager.determineBestMove();
     std::istringstream  iss(move);
     int y = std::stoi(move.substr(move.find(",") + 1));
     std::getline(iss, move, ',');
@@ -92,6 +89,7 @@ void AIBrain::receive(Event const &event)
 
 void AIBrain::begin()
 {
+    _type = ESquareType::BLACK;
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back("9,8");
@@ -112,10 +110,7 @@ void AIBrain::turn(std::string string)
     int y = std::stoi(string.substr(string.find(",") + 1));
     std::getline(iss, string, ',');
     int x = std::stoi(string);
-    if (_type == BLACK)
-        Board::Inst()->setSquare(x, y, WHITE);
-    else
-        Board::Inst()->setSquare(x, y, BLACK);
+    Board::Inst()->setSquare(x, y, WHITE);
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back(play());

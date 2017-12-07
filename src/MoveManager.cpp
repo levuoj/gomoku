@@ -32,7 +32,7 @@ void                        MoveManager::findMoves() {
     clear();
     for (const auto & it : Board::Inst()->getMap()) {
         if (it != ESquareType::EMPTY)
-            _moves.push_back(Move(idx % Board::SQRTDIM, idx / Board::SQRTDIM, it));
+            _moves.push_back(Move(idx % Board::SQRTDIM, idx / Board::SQRTDIM));
         ++idx;
     }
 }
