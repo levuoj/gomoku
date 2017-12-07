@@ -89,10 +89,10 @@ void AIBrain::receive(Event const &event)
 
 void AIBrain::begin()
 {
-    _type = ESquareType::BLACK;
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back("9,8");
+    Board::Inst()->setSquare(9, 8, ESquareType::BLACK);
     sending(event);
 }
 
@@ -111,6 +111,7 @@ void AIBrain::turn(std::string string)
     std::getline(iss, string, ',');
     int x = std::stoi(string);
     Board::Inst()->setSquare(x, y, WHITE);
+    Board::Inst()->displayMap();
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back(play());

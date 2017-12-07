@@ -10,6 +10,7 @@ std::string const             MoveManager::determineBestMove() {
         int                   bestScore = 0;
         std::string           bestMove;
         for (auto & it : this->_moves) {
+            //it.display();
             Action      bestAction = it.findBestAction();
 
             if (bestAction.score != EScore::INVALID) {

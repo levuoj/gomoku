@@ -21,32 +21,35 @@ bool        Move::checkSquare(int x, int y)
 }
 
 bool        Move::SquareExist(int x, int y) {
-    if ((_x + x < 0) || (_x + x > 18))
+    if ((x < 0) || (x > 18))
         return (false);
-    if ((_y + y < 0) || (_y + y > 18))
+    if ((y < 0) || (y > 18))
         return (false);
     return (true);
 }
 
 void        Move::addAction()
 {
-    _actions.emplace_back(EScore::INVALID, std::make_pair(_x, _y));
+    //_actions.emplace_back(EScore::INVALID, std::make_pair(_x, _y));
     if (checkSquare(-1, -1))
-	_actions.emplace_back(0, std::make_pair(_x - 1, _y - 1));
+        _actions.emplace_back(0, std::make_pair(_x - 1, _y - 1));
     if (checkSquare(0, -1))
-	_actions.emplace_back(0, std::make_pair(_x, _y - 1));
+        _actions.emplace_back(0, std::make_pair(_x, _y - 1));
     if (checkSquare(1, -1))
-	_actions.emplace_back(0, std::make_pair(_x + 1, _y - 1));
+        _actions.emplace_back(0, std::make_pair(_x + 1, _y - 1));
     if (checkSquare(1, 0))
-	_actions.emplace_back(0, std::make_pair(_x + 1, _y));
+        _actions.emplace_back(0, std::make_pair(_x + 1, _y));
     if (checkSquare(1, 1))
-	_actions.emplace_back(0, std::make_pair(_x + 1, _y + 1));
+        _actions.emplace_back(0, std::make_pair(_x + 1, _y + 1));
     if (checkSquare(-1, 1))
-	_actions.emplace_back(0, std::make_pair(_x - 1, _y + 1));
+        _actions.emplace_back(0, std::make_pair(_x - 1, _y + 1));
     if (checkSquare(0, 1))
-	_actions.emplace_back(0, std::make_pair(_x, _y + 1));
+        _actions.emplace_back(0, std::make_pair(_x, _y + 1));
     if (checkSquare(-1, 0))
-	_actions.emplace_back(0, std::make_pair(_x - 1, _y));
+        _actions.emplace_back(0, std::make_pair(_x - 1, _y));
+    std::cout << "Actions = " << _x << "," << _y << std::endl;
+    for (auto const& it : _actions)
+        std::cout << it.coords.first << "," << it.coords.second << std::endl;
 }
 
 std::string const   Move::addToPattern(int x, int y)
@@ -82,65 +85,73 @@ int                 Move::checkPattern(std::string const &pattern, ESquareType t
 
 int                 Move::diagonalNO(std::pair<int, int> const & pair, ESquareType type)
 {
-    std::string     pattern = NULL;
+    std::string     pattern;
 
     for (auto i = -4; i <= 4; ++i)
     {
-        if (SquareExist(pair.first + i, pair.second + i))
+        if (i == 0) {
+            if (type == ESquareType::BLACK)
+                pattern += 'B';
+            else
+                pattern += 'W';
+        }
+        else if (SquareExist(pair.first + i, pair.second + i))
             pattern += addToPattern(pair.first + i, pair.second + i);
     }
-    if (type == ESquareType::BLACK)
-        pattern.at(4) = 'B';
-    else
-        pattern.at(4) = 'W';
     return (checkPattern(pattern, type));
 }
 
 int                 Move::diagonalNE(std::pair<int, int> const & pair, ESquareType type)
 {
-    std::string     pattern = NULL;
+    std::string     pattern;
 
     for (auto i = -4; i <= 4; ++i)
     {
-        if (SquareExist(pair.first + i, pair.second - i))
+        if (i == 0) {
+            if (type == ESquareType::BLACK)
+                pattern += 'B';
+            else
+                pattern += 'W';
+        }
+        else if (SquareExist(pair.first + i, pair.second - i))
             pattern += addToPattern(pair.first + i, pair.second - i);
     }
-    if (type == ESquareType::BLACK)
-        pattern.at(4) = 'B';
-    else
-        pattern.at(4) = 'W';
     return (checkPattern(pattern, type));
 }
 
 int                 Move::horizontal(std::pair<int, int> const & pair, ESquareType type)
 {
-    std::string     pattern = NULL;
+    std::string     pattern;
 
     for (auto i = -4; i <= 4; ++i)
     {
-        if (SquareExist(pair.first + i, pair.second))
+        if (i == 0) {
+            if (type == ESquareType::BLACK)
+                pattern += 'B';
+            else
+                pattern += 'W';
+        }
+        else if (SquareExist(pair.first + i, pair.second))
             pattern += addToPattern(pair.first + i, pair.second);
     }
-    if (type == ESquareType::BLACK)
-        pattern.at(4) = 'B';
-    else
-        pattern.at(4) = 'W';
     return (checkPattern(pattern, type));
 }
 
 int                 Move::vertical(std::pair<int, int> const & pair, ESquareType type)
 {
-    std::string     pattern = NULL;
+    std::string     pattern;
 
     for (auto i = -4; i <= 4; ++i)
     {
-        if (SquareExist(pair.first, pair.second + i))
+        if (i == 0) {
+            if (type == ESquareType::BLACK)
+                pattern += 'B';
+            else
+                pattern += 'W';
+        }
+        else if (SquareExist(pair.first, pair.second + i))
             pattern += addToPattern(pair.first, pair.second + i);
     }
-    if (type == ESquareType::BLACK)
-        pattern.at(4) = 'B';
-    else
-        pattern.at(4) = 'W';
     return (checkPattern(pattern, type));
 }
 

@@ -9,6 +9,7 @@
 #include <vector>
 #include <map>
 #include <include/EScore.hpp>
+#include <iostream>
 
 struct Action {
     int                     score;
@@ -68,7 +69,13 @@ public:
     Move(int x, int y);
     ~Move() = default;
 
-    Action const &            findBestAction();
+    Action const &              findBestAction();
+
+    void                        display()
+    {
+        std::cout << "Move" << std::endl;
+        std::cout << "x = " << _x << std::endl << "y = " << std::endl;
+    }
 };
 
 #endif //TYRANNOSAURUS_R_MOVE_HPP
