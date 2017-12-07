@@ -92,8 +92,8 @@ void AIBrain::begin()
 {
     Event event;
     event.type = EventType::WRITE;
-    event.datas.push_back("9,8");
-    Board::Inst()->setSquare(10, 9, ESquareType::BLACK);
+    event.datas.push_back("10,9");
+    Board::Inst()->setSquare(9, 8, ESquareType::BLACK);
     sending(event);
 }
 
