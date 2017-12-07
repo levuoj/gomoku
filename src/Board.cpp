@@ -70,3 +70,8 @@ void                                Board::displayMap() const
     }
     std::cout << std::string(21, '#') << std::endl;
 }
+
+ESquareType Board::getSquareType(int x, int y)
+{
+    return (_map[x * SQRTDIM + y]);
+}

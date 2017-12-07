@@ -7,13 +7,17 @@
 
 enum        EScore : int
 {
-    FIVE        = 100,
-    FOUR_TWO    = 90,
-    FOUR_ONE    = 80,
-    THREE_TWO   = 70,
-    THREE_ONE   = 60,
+    VICTORY     = 1000000000,
+    DEFEAT      = 100000000,
+    FOUR_TWO    = 9000000,
+    FOUR_ONE_L  = 80000,
+    FOUR_ONE_R  = 80000,
+    THREE_TWO   = 7000,
+    THREE_ONE_L = 600,
+    THREE_ONE_R = 600,
     TWO_TWO     = 40,
-    TWO_ONE     = 20,
+    TWO_ONE_L   = 2,
+    TWO_ONE_R   = 2,
     INVALID     = -1000000,
 };
 

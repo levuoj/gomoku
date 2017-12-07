@@ -36,6 +36,8 @@ public:
     void displayMap() const;
 
     bool isEmpty(int x, int y) const;
+
+    ESquareType getSquareType(int x, int y);
 };
 
 

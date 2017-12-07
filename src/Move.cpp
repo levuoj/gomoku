@@ -3,10 +3,9 @@
 //
 
 #include <include/Board.hpp>
-#include <include/EScore.hpp>
 #include "Move.hpp"
 
-Move::Move(int x, int y, ESquareType type) : _x(x), _y(y), _type(type)
+Move::Move(int x, int y) : _x(x), _y(y)
 {
     addAction();
     setScore();
@@ -15,10 +14,18 @@ Move::Move(int x, int y, ESquareType type) : _x(x), _y(y), _type(type)
 bool        Move::checkSquare(int x, int y)
 {
     if ((_x + x < 0) || (_x + x > 18))
-	return (false);
+        return (false);
     if ((_y + y < 0) || (_y + y > 18))
-	return (false);
+        return (false);
     return (Board::Inst()->isEmpty(_x + x, _y + y));
+}
+
+bool        Move::SquareExist(int x, int y) {
+    if ((_x + x < 0) || (_x + x > 18))
+        return (false);
+    if ((_y + y < 0) || (_y + y > 18))
+        return (false);
+    return (true);
 }
 
 void        Move::addAction()
@@ -42,30 +49,99 @@ void        Move::addAction()
 	_actions.emplace_back(0, std::make_pair(_x - 1, _y));
 }
 
-int                 Move::diagonalNO(std::pair<int, int> const & pair)
+std::string const   Move::addToPattern(int x, int y)
 {
-    int             score = 0;
+    if (Board::Inst()->getSquareType(x, y) == ESquareType::EMPTY)
+        return (" ");
+    else if (Board::Inst()->getSquareType(x, y) == ESquareType::BLACK)
+        return  ("B");
+    else
+        return ("W");
+}
+
+int                 Move::checkPattern(std::string const &pattern, ESquareType type)
+{
+    if (type == ESquareType::BLACK)
+    {
+        for (auto const& map : BlackScore)
+        {
+            if (map.second.find(pattern) != std::string::npos)
+                return (map.first);
+        }
+    }
+    else
+    {
+        for (auto const& map : WhiteScore)
+        {
+            if (map.second.find(pattern) != std::string::npos)
+                return (map.first);
+        }
+    }
+    return (0);
+}
+
+int                 Move::diagonalNO(std::pair<int, int> const & pair, ESquareType type)
+{
     std::string     pattern = NULL;
 
-    return (score);
+    for (auto i = -4; i <= 4; ++i)
+    {
+        if (SquareExist(pair.first + i, pair.second + i))
+            pattern += addToPattern(pair.first + i, pair.second + i);
+    }
+    if (type == ESquareType::BLACK)
+        pattern.at(4) = 'B';
+    else
+        pattern.at(4) = 'W';
+    return (checkPattern(pattern, type));
 }
 
-int                 Move::diagonalNE(std::pair<int, int> const & pair)
+int                 Move::diagonalNE(std::pair<int, int> const & pair, ESquareType type)
 {
-    int             score = 0;
-    return (score);
+    std::string     pattern = NULL;
+
+    for (auto i = -4; i <= 4; ++i)
+    {
+        if (SquareExist(pair.first + i, pair.second - i))
+            pattern += addToPattern(pair.first + i, pair.second - i);
+    }
+    if (type == ESquareType::BLACK)
+        pattern.at(4) = 'B';
+    else
+        pattern.at(4) = 'W';
+    return (checkPattern(pattern, type));
 }
 
-int                 Move::horizontal(std::pair<int, int> const & pair)
+int                 Move::horizontal(std::pair<int, int> const & pair, ESquareType type)
 {
-    int             score = 0;
-    return (score);
+    std::string     pattern = NULL;
+
+    for (auto i = -4; i <= 4; ++i)
+    {
+        if (SquareExist(pair.first + i, pair.second))
+            pattern += addToPattern(pair.first + i, pair.second);
+    }
+    if (type == ESquareType::BLACK)
+        pattern.at(4) = 'B';
+    else
+        pattern.at(4) = 'W';
+    return (checkPattern(pattern, type));
 }
 
-int                 Move::vertical(std::pair<int, int> const & pair)
+int                 Move::vertical(std::pair<int, int> const & pair, ESquareType type)
 {
-    int             score = 0;
-    return (score);
+    std::string     pattern = NULL;
+
+    for (auto i = -4; i <= 4; ++i)
+    {
+        if (SquareExist(pair.first, pair.second + i))
+            pattern += addToPattern(pair.first, pair.second + i);
+    }
+    if (type == ESquareType::BLACK)
+        pattern.at(4) = 'B';
+    else
+        pattern.at(4) = 'W';
+    return (checkPattern(pattern, type));
 }
 
 void                Move::setScore()
@@ -74,11 +150,14 @@ void                Move::setScore()
     {
         if (it.score != EScore::INVALID)
         {
-            it.score = diagonalNO(it.coords)
-                    + diagonalNE(it.coords)
-                    + horizontal(it.coords)
-                    + vertical(it.coords);
-
+            it.score = diagonalNO(it.coords, ESquareType::BLACK)
+                       + diagonalNE(it.coords, ESquareType::BLACK)
+                       + horizontal(it.coords, ESquareType::BLACK)
+                       + vertical(it.coords, ESquareType::BLACK)
+                       + diagonalNO(it.coords, ESquareType::WHITE)
+                       + diagonalNE(it.coords, ESquareType::WHITE)
+                       + horizontal(it.coords, ESquareType::WHITE)
+                       + vertical(it.coords, ESquareType::WHITE);
         }
     }
 }
@@ -88,8 +167,8 @@ Action const&      Move::findBestAction()
     if (_actions.empty())
 	return (_actions.front());
     int score = 0;
-    int index = 0;
-    int count = 0;
+    size_t index = 0;
+    size_t count = 0;
     for (const auto &it : _actions)
     {
 	    if (score <= it.score)
