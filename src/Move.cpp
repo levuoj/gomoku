@@ -30,7 +30,7 @@ bool        Move::SquareExist(int x, int y) {
 
 void        Move::addAction()
 {
-    //_actions.emplace_back(EScore::INVALID, std::make_pair(_x, _y));
+    _actions.emplace_back(EScore::INVALID, std::make_pair(_x, _y));
     if (checkSquare(-1, -1))
         _actions.emplace_back(0, std::make_pair(_x - 1, _y - 1));
     if (checkSquare(0, -1))
@@ -190,5 +190,7 @@ Action const&      Move::findBestAction()
 	    }
         ++index;
     }
+    //std::cout << count << "/" << _actions.size() << std::endl;
+    //std::cout << "score = " << _actions.at(count).score << std::endl;
     return (_actions.at(count));
 }
