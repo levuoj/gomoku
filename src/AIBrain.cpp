@@ -66,7 +66,7 @@ std::string const     AIBrain::play()
     int y = std::stoi(toSplit.substr(toSplit.find(",") + 1));
     std::getline(iss, toSplit, ',');
     int x = std::stoi(toSplit);
-    Board::Inst()->setSquare(x, y, _type);
+    Board::Inst()->setSquare(x - 1, y - 1, _type);
     return (move);
 }
 
@@ -93,7 +93,7 @@ void AIBrain::begin()
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back("9,8");
-    Board::Inst()->setSquare(9, 8, ESquareType::BLACK);
+    Board::Inst()->setSquare(10, 9, ESquareType::BLACK);
     sending(event);
 }
 
@@ -108,9 +108,9 @@ void AIBrain::start(std::string const& string)
 void AIBrain::turn(std::string string)
 {
     std::istringstream  iss(string);
-    int y = std::stoi(string.substr(string.find(",") + 1));
+    int y = std::stoi(string.substr(string.find(",") + 1)) - 1;
     std::getline(iss, string, ',');
-    int x = std::stoi(string);
+    int x = std::stoi(string) - 1;	
     Board::Inst()->setSquare(x, y, WHITE);
     Event event;
     event.type = EventType::WRITE;
