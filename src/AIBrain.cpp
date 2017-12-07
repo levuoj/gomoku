@@ -63,7 +63,13 @@ int     AIBrain::minimax(int depth, int nodeIndex, bool maximizePlayer, std::vec
 std::string const     AIBrain::play()
 {
     moveManager.findMoves();
-    return (moveManager.determineBestMove());
+    std::string move = moveManager.determineBestMove();
+    std::istringstream  iss(move);
+    int y = std::stoi(move.substr(move.find(",") + 1));
+    std::getline(iss, move, ',');
+    int x = std::stoi(move);
+    Board::Inst()->setSquare(x, y, _type);
+    return (move);
 }
 
 void AIBrain::receive(Event const &event)
