@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(Tyrannosaurus-R)
 if (NOT WIN32)
-    set (CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
+    set (CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -g3")
 endif (NOT WIN32)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
