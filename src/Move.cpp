@@ -47,9 +47,6 @@ void        Move::addAction()
         _actions.emplace_back(0, std::make_pair(_x, _y + 1));
     if (checkSquare(-1, 0))
         _actions.emplace_back(0, std::make_pair(_x - 1, _y));
-    std::cout << "Actions = " << _x << "," << _y << std::endl;
-    for (auto const& it : _actions)
-        std::cout << it.coords.first << "," << it.coords.second << std::endl;
 }
 
 std::string const   Move::addToPattern(int x, int y)
@@ -68,7 +65,7 @@ int                 Move::checkPattern(std::string const &pattern, ESquareType t
     {
         for (auto const& map : BlackScore)
         {
-            if (map.second.find(pattern) != std::string::npos)
+            if (pattern.find(map.second) != std::string::npos)
                 return (map.first);
         }
     }
@@ -76,7 +73,7 @@ int                 Move::checkPattern(std::string const &pattern, ESquareType t
     {
         for (auto const& map : WhiteScore)
         {
-            if (map.second.find(pattern) != std::string::npos)
+            if (pattern.find(map.second) != std::string::npos)
                 return (map.first);
         }
     }

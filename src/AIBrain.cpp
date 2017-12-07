@@ -61,11 +61,13 @@ std::string const     AIBrain::play()
 {
     _moveManager.findMoves();
     std::string move = _moveManager.determineBestMove();
-    std::istringstream  iss(move);
-    int y = std::stoi(move.substr(move.find(",") + 1));
-    std::getline(iss, move, ',');
-    int x = std::stoi(move);
+    std::string toSplit = move;
+    std::istringstream  iss(toSplit);
+    int y = std::stoi(toSplit.substr(toSplit.find(",") + 1));
+    std::getline(iss, toSplit, ',');
+    int x = std::stoi(toSplit);
     Board::Inst()->setSquare(x, y, _type);
+    std::cout << "AI move : " << move << std::endl;
     return (move);
 }
 
@@ -111,9 +113,9 @@ void AIBrain::turn(std::string string)
     std::getline(iss, string, ',');
     int x = std::stoi(string);
     Board::Inst()->setSquare(x, y, WHITE);
-    Board::Inst()->displayMap();
     Event event;
     event.type = EventType::WRITE;
     event.datas.push_back(play());
+    Board::Inst()->displayMap();
     sending(event);
 }
