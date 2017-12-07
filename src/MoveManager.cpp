@@ -2,6 +2,7 @@
 // Created by pashervz on 05/12/17.
 //
 
+#include <string>
 #include <include/EScore.hpp>
 #include "MoveManager.hpp"
 
@@ -16,9 +17,9 @@ std::string const             MoveManager::determineBestMove() {
             if (bestAction.score != EScore::INVALID) {
                 if (bestAction.score > bestScore) {
                     bestScore += bestAction.score;
-                    bestMove = std::to_string(bestAction.coords.first) +
+                    bestMove = std::to_string(bestAction.coords.first + 1) +
                                "," +
-                               std::to_string(bestAction.coords.second);
+                               std::to_string(bestAction.coords.second + 1);
                 }
             }
         }
