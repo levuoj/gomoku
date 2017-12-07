@@ -7,9 +7,10 @@
 
 
 #include <vector>
-#include <map>
-#include <include/EScore.hpp>
+#include <utility>
+#include <unordered_map>
 #include <iostream>
+#include "EScore.hpp"
 
 struct Action {
     int                     score;
@@ -22,7 +23,6 @@ private:
     std::vector<Action>         _actions;
     int                         _x;
     int                         _y;
-    ESquareType                 _type;
 
     void                        addAction();
     bool                        checkSquare(int x, int y);
@@ -38,7 +38,7 @@ private:
     int                         checkPattern(std::string const& pattern, ESquareType type);
 
 private:
-    const	std::map<EScore, std::string> BlackScore =
+    const	std::vector<std::pair<EScore, std::string>> BlackScore =
             {
                     {VICTORY, "BBBBB"},
                     {FOUR_TWO, " BBBBB "},
@@ -52,7 +52,7 @@ private:
                     {TWO_ONE_R, "BB "}
             };
 
-    const	std::map<EScore, std::string> WhiteScore =
+    const	std::vector<std::pair<EScore, std::string>> WhiteScore =
             {
                     {DEFEAT, "WWWWW"},
                     {FOUR_TWO, " WWWWW "},
@@ -74,7 +74,10 @@ public:
     void                        display()
     {
         std::cout << "Move" << std::endl;
-        std::cout << "x = " << _x << std::endl << "y = " << std::endl;
+        std::cout << "x = " << _x << std::endl << "y = " << _y << std::endl;
+        for (auto const& it : _actions)
+            std::cout << it.score << " ";
+        std::cout << std::endl;
     }
 };
 
