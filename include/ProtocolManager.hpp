@@ -33,7 +33,7 @@ public:
 
     void    writeInfos(std::string const &) const;
 
-    void    makeEvent(std::vector<std::string> const &);
+    void    makeEvent(std::vector<std::string> &);
 
     bool    getTerminate() const { return _terminate; }
 };
