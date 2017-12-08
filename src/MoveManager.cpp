@@ -17,9 +17,9 @@ std::string const             MoveManager::determineBestMove() {
             if (bestAction.score != EScore::INVALID) {
                 if (bestAction.score > bestScore) {
                     bestScore += bestAction.score;
-                    bestMove = std::to_string(bestAction.coords.first + 1) +
+                    bestMove = std::to_string(bestAction.coords.first) +
                                "," +
-                               std::to_string(bestAction.coords.second + 1);
+                               std::to_string(bestAction.coords.second);
                 }
             }
         }
