@@ -36,7 +36,7 @@ int                                 Board::getSize() const
 
 void                                Board::setSize(int size)
 {
-    for (int i; i < (size * size); ++i)
+    for (int i = 0; i < (size * size); ++i)
         _map.push_back(EMPTY);
     _size = size;
 }
