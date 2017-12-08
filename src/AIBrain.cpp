@@ -44,7 +44,7 @@ void AIBrain::receive(Event const &event)
             begin();
             break;
         case EventType::START:
-            start("OK");
+            start(event.datas.at(0));
             break;
         case EventType::TURN:
             turn(event.datas.at(0));
@@ -61,17 +61,18 @@ void AIBrain::begin()
 {
     Event event;
     event.type = EventType::WRITE;
-    event.datas.push_back("18,18");
-    Board::Inst()->setSquare(18, 18, ESquareType::BLACK);
+    event.datas.push_back(std::to_string((Board::Inst()->getSize() - 1)) + "," + std::to_string((Board::Inst()->getSize() - 1)));
+    Board::Inst()->setSquare(Board::Inst()->getSize() - 1, Board::Inst()->getSize() - 1, ESquareType::BLACK);
     sending(event);
 }
 
 void AIBrain::start(std::string const& string)
 {
+    Board::Inst()->setSize(std::stoi(string));
     Board::Inst()->clearMap();
     Event event;
     event.type = EventType::WRITE;
-    event.datas.push_back(string);
+    event.datas.push_back("OK");
     sending(event);
 }
 

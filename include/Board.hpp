@@ -5,27 +5,28 @@
 #ifndef TYRANNOSAURUS_R_BOARD_HPP
 #define TYRANNOSAURUS_R_BOARD_HPP
 
-#include <array>
+#include <vector>
 #include <cmath>
 #include "ESquareType.hpp"
 
 class Board {
 private:
 
-    std::array<ESquareType, 361> _map;
+    std::vector<ESquareType>    _map;
+
+    int                         _size;
 
     static Board *              boardInst;
 
     Board();
 
 public:
-    static const int              SQRTDIM;
 
-    static Board *               Inst();
+    static Board *              Inst();
 
     ~Board() = default;
 
-    std::array<ESquareType, 361> const &getMap() const;
+    std::vector<ESquareType> const &getMap() const;
 
     void setSquare(int x, int y, ESquareType);
 
@@ -38,6 +39,9 @@ public:
     bool isEmpty(int x, int y) const;
 
     ESquareType getSquareType(int x, int y);
+
+    int          getSize() const;
+    void          setSize(int);
 };
 
 

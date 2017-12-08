@@ -19,26 +19,36 @@ Board *        Board::Inst() {
 
 //END
 
-const int      Board::SQRTDIM = static_cast<int>(std::sqrt(361));
-
 Board::Board()
 {
     clearMap();
 }
 
-std::array<ESquareType, 361> const& Board::getMap() const
+std::vector<ESquareType> const& Board::getMap() const
 {
     return (_map);
 }
 
+int                                 Board::getSize() const
+{
+    return (_size);
+}
+
+void                                Board::setSize(int size)
+{
+    for (int i; i < (size * size); ++i)
+        _map.push_back(EMPTY);
+    _size = size;
+}
+
 void                                Board::setSquare(int x, int y, ESquareType type)
 {
-    _map[x + SQRTDIM * y] = type;
+    _map[x + _size * y] = type;
 }
 
 void                                Board::emptySquare(int x, int y)
 {
-    _map[x + SQRTDIM * y] = EMPTY;
+    _map[x + _size * y] = EMPTY;
 }
 
 void                                Board::clearMap()
@@ -48,20 +58,20 @@ void                                Board::clearMap()
 
 bool                                Board::isEmpty(int x, int y) const
 {
-    return (_map[x + SQRTDIM * y] ==  EMPTY);
+    return (_map[x + _size * y] ==  EMPTY);
 }
 
 void                                Board::displayMap() const
 {
     std::cout << std::string(21, '#') << std::endl;
-    for (auto y = 0; y < SQRTDIM; ++y)
+    for (auto y = 0; y < _size; ++y)
     {
         std::cout << "#";
-        for (auto x = 0; x < SQRTDIM; ++x)
+        for (auto x = 0; x < _size; ++x)
         {
-            if (_map[x + SQRTDIM * y] == EMPTY)
+            if (_map[x + _size * y] == EMPTY)
                 std::cout << " ";
-            else if (_map[x + SQRTDIM * y] == BLACK)
+            else if (_map[x + _size * y] == BLACK)
                 std::cout << "B";
             else
                 std::cout << "W";
@@ -73,5 +83,5 @@ void                                Board::displayMap() const
 
 ESquareType Board::getSquareType(int x, int y)
 {
-    return (_map[x + SQRTDIM * y]);
+    return (_map[x + _size * y]);
 }

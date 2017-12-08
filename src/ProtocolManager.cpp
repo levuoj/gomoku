@@ -51,10 +51,12 @@ void ProtocolManager::makeEvent(std::vector<std::string> & infos) {
             Event           event;
 
             event.type = it.second;
-            if (event.type == TURN) {
-                if (infos.at(0).find("TURN") != std::string::npos)
-                    infos.at(0) = infos.at(0).substr(infos.at(0).find(" ") + 1);
-            }
+
+            if (infos.at(0).find("TURN") != std::string::npos)
+                infos.at(0) = infos.at(0).substr(infos.at(0).find(" ") + 1);
+            if (infos.at(0).at(0) == 'S' && infos.at(0).find("START") != std::string::npos)
+                infos.at(0) = infos.at(0).substr(infos.at(0).find(" ") + 1);
+
             event.datas = infos;
             _mediator.transmit(event);
             break;
