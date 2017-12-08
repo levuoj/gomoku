@@ -13,17 +13,17 @@ Move::Move(int x, int y) : _x(x), _y(y)
 
 bool        Move::checkSquare(int x, int y)
 {
-    if ((_x + x < 0) || (_x + x > 19))
+    if ((_x + x < 0) || (_x + x > 18))
         return (false);
-    if ((_y + y < 0) || (_y + y > 19))
+    if ((_y + y < 0) || (_y + y > 18))
         return (false);
     return (Board::Inst()->isEmpty(_x + x, _y + y));
 }
 
 bool        Move::SquareExist(int x, int y) {
-    if ((x < 0) || (x > 19))
+    if ((x < 0) || (x > 18))
         return (false);
-    if ((y < 0) || (y > 19))
+    if ((y < 0) || (y > 18))
         return (false);
     return (true);
 }

@@ -12,7 +12,7 @@
 class Board {
 private:
 
-    std::array<ESquareType, 400> _map;
+    std::array<ESquareType, 361> _map;
 
     static Board *              boardInst;
 
@@ -25,7 +25,7 @@ public:
 
     ~Board() = default;
 
-    std::array<ESquareType, 400> const &getMap() const;
+    std::array<ESquareType, 361> const &getMap() const;
 
     void setSquare(int x, int y, ESquareType);
 

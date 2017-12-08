@@ -19,14 +19,14 @@ Board *        Board::Inst() {
 
 //END
 
-const int      Board::SQRTDIM = static_cast<int>(std::sqrt(400));
+const int      Board::SQRTDIM = static_cast<int>(std::sqrt(361));
 
 Board::Board()
 {
     clearMap();
 }
 
-std::array<ESquareType, 400> const& Board::getMap() const
+std::array<ESquareType, 361> const& Board::getMap() const
 {
     return (_map);
 }
@@ -53,7 +53,7 @@ bool                                Board::isEmpty(int x, int y) const
 
 void                                Board::displayMap() const
 {
-    std::cout << std::string(22, '#') << std::endl;
+    std::cout << std::string(21, '#') << std::endl;
     for (auto y = 0; y < SQRTDIM; ++y)
     {
         std::cout << "#";
@@ -68,7 +68,7 @@ void                                Board::displayMap() const
         }
         std::cout << "#" << std::endl;
     }
-    std::cout << std::string(22, '#') << std::endl;
+    std::cout << std::string(21, '#') << std::endl;
 }
 
 ESquareType Board::getSquareType(int x, int y)

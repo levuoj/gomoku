@@ -61,8 +61,8 @@ void AIBrain::begin()
 {
     Event event;
     event.type = EventType::WRITE;
-    event.datas.push_back("19,19");
-    Board::Inst()->setSquare(19, 19, ESquareType::BLACK);
+    event.datas.push_back("18,18");
+    Board::Inst()->setSquare(18, 18, ESquareType::BLACK);
     sending(event);
 }
 
