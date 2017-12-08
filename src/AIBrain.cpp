@@ -83,6 +83,9 @@ void AIBrain::receive(Event const &event)
         case EventType::TURN:
             turn(event.datas.at(0));
             break;
+        case EventType ::BOARD:
+            board(event.datas);
+            break;
         default:
             break;
     }
@@ -117,5 +120,31 @@ void AIBrain::turn(std::string string)
     event.type = EventType::WRITE;
     event.datas.push_back(play());
     //Board::Inst()->displayMap();
+    sending(event);
+}
+
+void AIBrain::board(std::vector<std::string> const& infos)
+{
+    Board::Inst()->clearMap();
+    for (auto const& it : infos)
+    {
+        if (it != "BOARD")
+        {
+            std::string str = it;
+            std::istringstream iss(str);
+            int color = std::stoi(str.substr(str.find_last_of(",") + 1));
+            std::getline(iss, str, ',');
+            int x = std::stoi(str.substr(str.find(",") + 1)) - 1;
+            std::getline(iss, str, ',');
+            int y = std::stoi(str) - 1;
+            if (color == 1)
+                Board::Inst()->setSquare(x, y, BLACK);
+            else
+                Board::Inst()->setSquare(x, y, WHITE);
+        }
+    }
+    Event event;
+    event.type = EventType::WRITE;
+    event.datas.push_back(play());
     sending(event);
 }

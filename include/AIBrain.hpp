@@ -36,6 +36,8 @@ public:
 
     void setType(ESquareType);
 
+    void board(std::vector<std::string> const&);
+
     void begin();
 
     void start(std::string const &);

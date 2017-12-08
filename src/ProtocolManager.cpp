@@ -28,6 +28,7 @@ void ProtocolManager::readInfos() {
     std::string                     info;
 
     std::getline(std::cin, info);
+    infos.push_back(info);
     if (info.find("BOARD") != std::string::npos) {
         while (true) {
             std::getline(std::cin, info);
@@ -36,8 +37,6 @@ void ProtocolManager::readInfos() {
             infos.push_back(info);
         }
     }
-	else
-		infos.push_back(info);
     makeEvent(infos);
 }
 
