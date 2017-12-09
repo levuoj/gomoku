@@ -1,3 +1,0 @@
-C:/Users/53495/Desktop/Gomoku/gomoku-lab/Windows/CMakeFiles/pbrain-Tyrannosaurus-R.dir
-C:/Users/53495/Desktop/Gomoku/gomoku-lab/Windows/CMakeFiles/ALL_BUILD.dir
-C:/Users/53495/Desktop/Gomoku/gomoku-lab/Windows/CMakeFiles/ZERO_CHECK.dir
